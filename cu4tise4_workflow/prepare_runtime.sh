@@ -10,6 +10,12 @@ MLP_LIB="$MLP_DIR/lib/lib_mlip_interface.a"
 
 echo "Preparing MLIP/LAMMPS runtime in $ROOT_DIR"
 
+if command -v rg >/dev/null 2>&1; then
+  FIND_CMD=(rg -q '^mlip[[:space:]]')
+else
+  FIND_CMD=(grep -qE '^mlip[[:space:]]')
+fi
+
 if [[ ! -x "$MLP_BIN" ]]; then
   echo "Building mlip executable..."
   make -C "$MLP_DIR" mlp
@@ -22,7 +28,7 @@ fi
 
 if [[ -f "$LAMMPS_BIN" ]]; then
   chmod +x "$LAMMPS_BIN"
-  if "$LAMMPS_BIN" -help | rg -q '^mlip[[:space:]]'; then
+  if "$LAMMPS_BIN" -help | "${FIND_CMD[@]}"; then
     echo "LAMMPS MLIP pair style is available."
   else
     echo "LAMMPS binary exists but pair_style mlip was not found in -help output." >&2
