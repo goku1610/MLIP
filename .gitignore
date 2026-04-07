@@ -1,0 +1,10 @@
+build/
+*.o
+*.so
+__pycache__/
+*.log
+venv/
+lammps-*/
+lammps/
+lmp_mpi
+*.pdf

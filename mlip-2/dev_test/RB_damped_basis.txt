@@ -1,0 +1,5 @@
+radial_basis_type = RBvdW_damped
+	min_dist = 0
+	max_dist = 6
+	radial_basis_size = 2
+	radial_basis_params = -0.5 30

@@ -1,0 +1,34 @@
+# LAMMPS Script for Elastic Constant Validation (Tungsten/GaAs)
+# Requires: MLIP Interface installed in LAMMPS
+
+units           metal
+boundary        p p p
+atom_style      atomic
+
+# --- 1. System Initialization ---
+# Users should define lattice/region here or read_data
+lattice         bcc 3.165  # Example for Tungsten
+region          simbox block 0 5 0 5 0 5
+create_box      1 simbox
+create_atoms    1 box
+
+# --- 2. Load ML Potential ---
+# The pair_style command links LAMMPS to the trained MTP model
+pair_style      mlip mlip.ini
+pair_coeff      * * trained.almtp W
+
+# --- 3. Minimization ---
+minimize        1.0e-10 1.0e-10 1000 10000
+
+# --- 4. Elastic Constant Calculation (Deformation Loop) ---
+variable        delta equal 0.001
+variable        p0 equal pxx
+
+# Apply strain (tensile X)
+change_box      all x scale ${delta} remap units box
+run             0
+
+# Output resulting stress
+variable        p1 equal pxx
+variable        C11 equal (v_p1-v_p0)/v_delta
+print           "Estimated C11 (Stiffness): ${C11} GPa"
