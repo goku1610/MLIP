@@ -1,0 +1,37 @@
+/home/architg575/MLIPS/MLIP/mlip-2/obj/ser/mlip_wrapper.cpp.o: \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/mlip_wrapper.cpp \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/mlip_wrapper.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/lotf.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/basic_trainer.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/basic_mlip.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/basic_potentials.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/neighborhoods.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/configuration.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/mlip.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/common/utils.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/common/matrix3.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/common/vector3.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/radial_basis.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/common/multidimensional_arrays.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/common/utils.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/active_learning.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/maxvol.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/common/stdafx.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/linear_regression.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/mtp.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/error_monitor.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/pair_potentials.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/vasp_potential.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/lammps_potential.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/../dev_src/mtpr_trainer.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/../dev_src/non_linear_regression.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/../dev_src/../src/basic_trainer.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/../dev_src/mtpr.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/../dev_src/../src/common/multidimensional_arrays.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/../dev_src/../src/common/bfgs.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/../dev_src/../src/common/multidimensional_arrays.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/../dev_src/../src/common/utils.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/../dev_src/combined_any_local_mlip.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/../dev_src/../src/pair_potentials.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/../dev_src/eam.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/../dev_src/sw_basis.h

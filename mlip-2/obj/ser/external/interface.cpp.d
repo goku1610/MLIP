@@ -1,0 +1,23 @@
+/home/architg575/MLIPS/MLIP/mlip-2/obj/ser/external/interface.cpp.o: \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/external/interface.cpp \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/external/../mlip_wrapper.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/external/../lotf.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/external/../basic_trainer.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/external/../basic_mlip.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/external/../basic_potentials.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/external/../neighborhoods.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/external/../configuration.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/external/../mlip.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/external/../common/utils.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/external/../common/matrix3.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/external/../common/vector3.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/external/../radial_basis.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/external/../common/multidimensional_arrays.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/external/../common/utils.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/external/../active_learning.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/external/../maxvol.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/external/../common/stdafx.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/external/../linear_regression.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/external/../mtp.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/external/../error_monitor.h \
+ /home/architg575/MLIPS/MLIP/mlip-2/src/external/../mlip.h
