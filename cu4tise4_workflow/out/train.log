@@ -1,0 +1,38 @@
+MTPR from /home/architg575/MLIPS/MLIP/cu4tise4_workflow/out/cu4tise4_level22_init.mtp, Database: /home/architg575/MLIPS/MLIP/train_set.cfg
+validation set: /home/architg575/MLIPS/MLIP/test_set.cfg
+Random initialization of radial coefficients
+
+--- RESUMED at Mon Apr 13 09:51:00 UTC 2026 from checkpoint: cu4tise4_workflow/out/cu4tise4_5day_checkpoint.mtp ---
+
+MTPR from cu4tise4_workflow/out/cu4tise4_5day_checkpoint.mtp, Database: /home/architg575/MLIPS/MLIP/train_set.cfg
+validation set: /home/architg575/MLIPS/MLIP/test_set.cfg
+BFGS iterations count set to 1000
+BFGS convergence tolerance set to 0.001
+Energy weight: 1
+Force weight: 0.01
+Stress weight: 0.001
+MTPR parallel training started
+mpirun: Forwarding signal 20 to job
+mpirun: Forwarding signal 18 to job
+
+--- RESUMED at Mon Apr 13 10:06:34 UTC 2026 from checkpoint: cu4tise4_workflow/out/cu4tise4_5day_checkpoint.mtp ---
+
+MTPR from cu4tise4_workflow/out/cu4tise4_5day_checkpoint.mtp, Database: /home/architg575/MLIPS/MLIP/train_set.cfg
+validation set: /home/architg575/MLIPS/MLIP/test_set.cfg
+BFGS iterations count set to 1000
+BFGS convergence tolerance set to 0.001
+Energy weight: 1
+Force weight: 0.01
+Stress weight: 0.001
+MTPR parallel training started
+
+--- RESUMED at Mon Apr 13 10:17:06 UTC 2026 from checkpoint: cu4tise4_workflow/out/cu4tise4_5day_checkpoint.mtp ---
+
+MTPR from cu4tise4_workflow/out/cu4tise4_5day_checkpoint.mtp, Database: /home/architg575/MLIPS/MLIP/train_set.cfg
+validation set: /home/architg575/MLIPS/MLIP/test_set.cfg
+BFGS iterations count set to 1000
+BFGS convergence tolerance set to 0.001
+Energy weight: 1
+Force weight: 0.01
+Stress weight: 0.001
+MTPR parallel training started

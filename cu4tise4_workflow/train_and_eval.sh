@@ -22,6 +22,8 @@ ENERGY_WEIGHT="${ENERGY_WEIGHT:-1}"
 FORCE_WEIGHT="${FORCE_WEIGHT:-0.01}"
 STRESS_WEIGHT="${STRESS_WEIGHT:-0.001}"
 MPI_NP="${MPI_NP:-1}"
+RESUME_FROM="${RESUME_FROM:-}"
+APPEND_LOG="${APPEND_LOG:-false}"
 
 classify_train_stage() {
   local log_file="$1"
@@ -31,18 +33,31 @@ classify_train_stage() {
     return
   fi
 
-  if grep -q "Pre-training ended" "$log_file"; then
+  # If we resumed, only look at log content after the last resume separator
+  # so that old log lines don't pollute the stage detection
+  local resume_line
+  resume_line=$(grep -n "^--- RESUMED at" "$log_file" | tail -1 | cut -d: -f1)
+
+  local recent
+  if [[ -n "$resume_line" ]]; then
+    recent=$(tail -n +"$resume_line" "$log_file")
+  else
+    recent=$(cat "$log_file")
+  fi
+
+  if echo "$recent" | grep -q "BFGS" || echo "$recent" | grep -q "Pre-training ended"; then
     echo "stage 3/4 main fit"
-  elif grep -q "Pre-training started" "$log_file"; then
+  elif echo "$recent" | grep -q "Pre-training started"; then
     echo "stage 2/4 pre-training"
-  elif grep -q "Rescaling..." "$log_file"; then
+  elif echo "$recent" | grep -q "Rescaling..."; then
     echo "stage 1/4 pre-init rescale"
-  elif grep -q "Random initialization of radial coefficients" "$log_file"; then
+  elif echo "$recent" | grep -q "Random initialization of radial coefficients"; then
     echo "stage 1/4 random initialization"
   else
     echo "stage 1/4 setup"
   fi
 }
+
 
 run_with_heartbeat() {
   local mode="$1"
@@ -52,7 +67,11 @@ run_with_heartbeat() {
   local start_ts now elapsed
   start_ts="$(date +%s)"
 
-  "$@" > >(tee "$log_file") 2>&1 &
+  if [[ "$APPEND_LOG" == "true" ]]; then
+    "$@" > >(tee -a "$log_file") 2>&1 &
+  else
+    "$@" > >(tee "$log_file") 2>&1 &
+  fi
   local cmd_pid=$!
   local stage_msg current_age
 
@@ -112,13 +131,39 @@ mtp-filename    $TRAINED_MTP
 select          FALSE
 EOF
 
+# Determine starting MTP: checkpoint or fresh init
+if [[ -n "$RESUME_FROM" ]]; then
+  if [[ ! -f "$RESUME_FROM" ]]; then
+    echo "ERROR: RESUME_FROM file not found: $RESUME_FROM" >&2
+    exit 1
+  fi
+  START_MTP="$RESUME_FROM"
+  APPEND_LOG="true"
+  echo ""
+  echo "========================================="
+  echo "  RESUMING FROM CHECKPOINT"
+  echo "  Checkpoint : $START_MTP"
+  echo "  Log will be APPENDED to: $TRAIN_LOG"
+  echo "========================================="
+  echo ""
+  {
+    echo ""
+    echo "--- RESUMED at $(date) from checkpoint: $START_MTP ---"
+    echo ""
+  } >> "$TRAIN_LOG"
+else
+  START_MTP="$INIT_MTP"
+  APPEND_LOG="false"
+  echo "Starting fresh training from: $START_MTP"
+fi
+
 echo "Training Cu4TiSe4 MTP..."
 echo "[train_and_eval] stage 1/4 setup and initialization"
 if [[ "$MPI_NP" -gt 1 ]]; then
   echo "[train_and_eval] using MPI with ${MPI_NP} ranks"
 fi
 run_with_heartbeat "train" "$TRAIN_LOG" \
-  run_mlp stdbuf -oL -eL "$MLP_BIN" train "$INIT_MTP" "$TRAIN_CFG" \
+  run_mlp stdbuf -oL -eL "$MLP_BIN" train "$START_MTP" "$TRAIN_CFG" \
   --valid-cfgs="$TEST_CFG" \
   --energy-weight="$ENERGY_WEIGHT" \
   --force-weight="$FORCE_WEIGHT" \
